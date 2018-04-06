@@ -2,6 +2,11 @@
 %define libname %mklibname %{name}_ %{major}
 %define develname %mklibname %{name} -d
 
+%ifarch %{ix86}
+# Required for various inline assembly bits
+%global optflags %{optflags} -mmmx -msse -msse2
+%endif
+
 Summary:	The reference C implementation of Argon2
 Name:		argon2
 Version:	20171227
