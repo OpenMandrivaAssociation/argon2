@@ -10,7 +10,7 @@
 Summary:	The reference C implementation of Argon2
 Name:		argon2
 Version:	20171227
-Release:	3
+Release:	4
 License:	ASL 2.0
 Group:		System/Libraries
 Url:		https://github.com/P-H-C/phc-winner-argon2
@@ -50,7 +50,7 @@ password-hashing function that won the Password Hashing Competition (PHC).
 #----------------------------------------------------
 
 %prep
-%setup -q -n phc-winner-%{name}-%{version}
+%autosetup -n phc-winner-%{name}-%{version} -p1
 
 sed -i s,"LIBRARY_REL = lib","LIBRARY_REL = %{_lib}", Makefile
 sed -i -e "s|@UPSTREAM_VER@|%{version}|" libargon2.pc
@@ -58,10 +58,10 @@ sed -i -e "s|lib/@HOST_MULTIARCH@|%{_lib}|" libargon2.pc
 
 %build
 %setup_compile_flags
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 # we don't want these
 find %{buildroot} -name '*.a' -delete
