@@ -55,8 +55,8 @@ password-hashing function that won the Password Hashing Competition (PHC).
 %autosetup -n phc-winner-%{name}-%{version} -p1
 
 sed -i s,"LIBRARY_REL = lib","LIBRARY_REL = %{_lib}", Makefile
-sed -i -e "s|@UPSTREAM_VER@|%{version}|" libargon2.pc
-sed -i -e "s|lib/@HOST_MULTIARCH@|%{_lib}|" libargon2.pc
+sed -i -e "s|@UPSTREAM_VER@|%{version}|" libargon2.pc.in
+sed -i -e "s|lib/@HOST_MULTIARCH@|%{_lib}|" libargon2.pc.in
 
 %build
 %setup_compile_flags
