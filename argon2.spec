@@ -4,13 +4,15 @@
 
 %ifarch %{ix86}
 # Required for various inline assembly bits
-%global optflags %{optflags} -mmmx -msse -msse2
+%global optflags %{optflags} -O3 -mmmx -msse -msse2
+%else
+%global optflags %{optflags} -O3
 %endif
 
 Summary:	The reference C implementation of Argon2
 Name:		argon2
-Version:	20171227
-Release:	4
+Version:	20190702
+Release:	1
 License:	ASL 2.0
 Group:		System/Libraries
 Url:		https://github.com/P-H-C/phc-winner-argon2
