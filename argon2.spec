@@ -2,17 +2,12 @@
 %define libname %mklibname %{name}_ %{major}
 %define develname %mklibname %{name} -d
 
-%ifarch %{ix86}
-# Required for various inline assembly bits
-%global optflags %{optflags} -O3 -mmmx -msse -msse2
-%else
 %global optflags %{optflags} -O3
-%endif
 
 Summary:	The reference C implementation of Argon2
 Name:		argon2
 Version:	20190702
-Release:	1
+Release:	2
 License:	ASL 2.0
 Group:		System/Libraries
 Url:		https://github.com/P-H-C/phc-winner-argon2
@@ -59,7 +54,7 @@ sed -i -e "s|@UPSTREAM_VER@|%{version}|" libargon2.pc.in
 sed -i -e "s|lib/@HOST_MULTIARCH@|%{_lib}|" libargon2.pc.in
 
 %build
-%setup_compile_flags
+%set_build_flags
 %make_build
 
 %install
