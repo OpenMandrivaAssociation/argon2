@@ -7,7 +7,7 @@
 Summary:	The reference C implementation of Argon2
 Name:		argon2
 Version:	20190702
-Release:	2
+Release:	3
 License:	ASL 2.0
 Group:		System/Libraries
 Url:		https://github.com/P-H-C/phc-winner-argon2
@@ -71,7 +71,7 @@ make test
 
 %files
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1*
+%doc %{_mandir}/man1/%{name}.1*
 
 %files -n %{libname}
 %{_libdir}/lib%{name}.so.%{major}*
