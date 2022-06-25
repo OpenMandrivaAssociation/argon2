@@ -12,6 +12,7 @@ License:	ASL 2.0
 Group:		System/Libraries
 Url:		https://github.com/P-H-C/phc-winner-argon2
 Source0:	https://github.com/P-H-C/phc-winner-argon2/archive/%{version}/phc-winner-%{name}-%{version}.tar.gz
+Patch0:		argon2-optflags.patch
 Requires:	%{libname} = %{EVRD}
 
 %description
@@ -55,7 +56,7 @@ sed -i -e "s|lib/@HOST_MULTIARCH@|%{_lib}|" libargon2.pc.in
 
 %build
 %set_build_flags
-%make_build CFLAGS="%{optflags}"
+%make_build RPM_OPT_FLAGS="%{optflags}"
 
 %install
 %make_install

@@ -1,0 +1,21 @@
+diff -up phc-winner-argon2-20190702/Makefile.omv~ phc-winner-argon2-20190702/Makefile
+--- phc-winner-argon2-20190702/Makefile.omv~	2022-06-26 01:11:37.976768247 +0200
++++ phc-winner-argon2-20190702/Makefile	2022-06-26 01:12:27.949400844 +0200
+@@ -37,7 +37,7 @@ SRC_BENCH = src/bench.c
+ SRC_GENKAT = src/genkat.c
+ OBJ = $(SRC:.c=.o)
+ 
+-CFLAGS += -std=c89 -O3 -Wall -g -Iinclude -Isrc
++CFLAGS += $(RPM_OPT_FLAGS) -Wall -Iinclude -Isrc
+ 
+ ifeq ($(NO_THREADS), 1)
+ CFLAGS += -DARGON2_NO_THREADS
+@@ -57,7 +57,7 @@ $(info Building without optimizations)
+ 	SRC += src/ref.c
+ else
+ $(info Building with optimizations for $(OPTTARGET))
+-	CFLAGS += -march=$(OPTTARGET)
++	#CFLAGS += -march=$(OPTTARGET)
+ 	SRC += src/opt.c
+ endif
+ 
