@@ -7,7 +7,7 @@
 Summary:	The reference C implementation of Argon2
 Name:		argon2
 Version:	20190702
-Release:	3
+Release:	4
 License:	ASL 2.0
 Group:		System/Libraries
 Url:		https://github.com/P-H-C/phc-winner-argon2
@@ -55,7 +55,7 @@ sed -i -e "s|lib/@HOST_MULTIARCH@|%{_lib}|" libargon2.pc.in
 
 %build
 %set_build_flags
-%make_build
+%make_build CFLAGS="%{optflags}"
 
 %install
 %make_install
