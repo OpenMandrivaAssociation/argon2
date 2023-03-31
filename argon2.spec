@@ -7,7 +7,7 @@
 Summary:	The reference C implementation of Argon2
 Name:		argon2
 Version:	20190702
-Release:	4
+Release:	5
 License:	ASL 2.0
 Group:		System/Libraries
 Url:		https://github.com/P-H-C/phc-winner-argon2
