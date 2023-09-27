@@ -67,8 +67,10 @@ find %{buildroot} -name '*.a' -delete
 install -D -m 644 man/argon2.1 %{buildroot}%{_mandir}/man1/%{name}.1
 install -D -m 644 libargon2.pc %{buildroot}%{_libdir}/pkgconfig/lib%{name}.pc
 
+%if ! %{cross_compiling}
 %check
 make test
+%endif
 
 %files
 %{_bindir}/%{name}
