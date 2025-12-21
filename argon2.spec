@@ -15,6 +15,7 @@ Source0:	https://github.com/P-H-C/phc-winner-argon2/archive/%{version}/phc-winne
 Patch0:		argon2-optflags.patch
 Requires:	%{libname} = %{EVRD}
 
+BuildRequires:	make
 %description
 This is the reference C implementation of Argon2, the password-hashing
 function that won the Password Hashing Competition (PHC).
