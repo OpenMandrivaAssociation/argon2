@@ -7,7 +7,7 @@
 Summary:	The reference C implementation of Argon2
 Name:		argon2
 Version:	20190702
-Release:	6
+Release:	7
 License:	Apache-2.0
 Group:		System/Libraries
 Url:		https://github.com/P-H-C/phc-winner-argon2
@@ -57,10 +57,16 @@ sed -i -e "s|lib/@HOST_MULTIARCH@|%{_lib}|" libargon2.pc.in
 
 %build
 %set_build_flags
-%make_build RPM_OPT_FLAGS="%{optflags}"
+# Upstream Makefile probes $(CC) -march=$(OPTTARGET) at parse time
+# (default OPTTARGET=native) and may pick src/opt.c. none forces the
+# portable src/ref.c so %build and %install agree, and so we do not
+# bake -march=native into distro binaries.
+%make_build RPM_OPT_FLAGS="%{optflags}" OPTTARGET=none
 
 %install
-%make_install
+# %install is a new make; without CC it defaults to host cc and would
+# rebuild. install: $(RUN) libs depends on the binaries.
+%make_install CC="%{__cc}" OPTTARGET=none
 
 # we don't want these
 find %{buildroot} -name '*.a' -delete
