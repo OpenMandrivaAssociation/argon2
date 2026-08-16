@@ -7,7 +7,7 @@
 Summary:	The reference C implementation of Argon2
 Name:		argon2
 Version:	20190702
-Release:	7
+Release:	8
 License:	Apache-2.0
 Group:		System/Libraries
 Url:		https://github.com/P-H-C/phc-winner-argon2
@@ -16,6 +16,8 @@ Patch0:		argon2-optflags.patch
 Requires:	%{libname} = %{EVRD}
 
 BuildRequires:	make
+# find-debuginfo runs gdb-add-index, which execs gdb
+BuildRequires:	gdb
 %description
 This is the reference C implementation of Argon2, the password-hashing
 function that won the Password Hashing Competition (PHC).
